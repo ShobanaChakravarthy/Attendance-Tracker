@@ -1,0 +1,51 @@
+{%extends "layout.html"%}
+{%block content%}
+<div class="row">
+    <div class="split left">    
+    </div>
+    <div class="split right"><br>
+        <img class="img1" width=400px height=60px src="{{url_for('static',filename='sopra_steria.png')}}"><br><br>
+        <form action="/capture" method="POST">
+            <div class="form-group col-md-8">
+                <input placeholder="Employee Id" type="text" name="emp_id" maxlength="6" class="form-control centre" required>
+            </div><br>
+            <div class="form-group col-md-8 md-form">
+                <input placeholder="Select time" type="time" value="09:00" name="str_time" class="form-control centre">
+            </div><br>
+            <div class="form-group col-md-8">
+                <select class="form-control centre" id="inoff" name="inoff" required>
+                    <option value="login">Login</option>
+                    <option value="logout">Logout</option>
+                </select>
+            </div><br>
+            <div class="form-group col-md-8">
+                <select class="form-control centre" id="scrum" name="scrum" required>
+                    <option value="scrum1">Scrum1</option>
+                    <option value="scrum2">Scrum2</option>
+                    <option value="scrum3">Scrum3</option>
+                </select>
+            </div><br>
+            <div class="form-group text-center">
+                <input type="submit" class="btn btn-primary p-button" value="Submit" name="Submit">
+            </div>
+            <div class="message">
+                {{text | safe}}
+            </div>
+        </form>
+        <hr><br>
+        <form action="/display" method="POST">
+            <div class="form-group col-md-8">
+                <select class="form-control centre" id="scrumfet" name="scrumfet">
+                    <option value="fetch-all">FetchAll</option>
+                    <option value="fetch-scrum1">Scrum1</option>
+                    <option value="fetch-scrum2">Scrum2</option>
+                    <option value="fetch-scrum3">Scrum3</option>
+                </select>
+            </div><br>
+            <div class="form-group text-center">
+                <input type="submit" class="btn btn-primary p-button" value="Fetch" name="Submit">
+            </div>
+        </form>
+    </div>
+</div>
+{%endblock%}

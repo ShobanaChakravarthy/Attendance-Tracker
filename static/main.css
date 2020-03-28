@@ -1,0 +1,128 @@
+/*************************************html elements***************************************/
+html,body{
+  height: 100%;
+  background-image: url("/static/bg4.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+
+}
+select { 
+  width: 400px; 
+  text-align-last:center; }
+
+hr { 
+  position: relative; 
+  border-top: 2px solid;
+  border-color: red; 
+  width: 20em;
+  margin-left: 5em;
+} 
+
+img{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    background:rgba(0,0,0,0.6);
+}
+
+td, th {
+    border: 2px solid #293330;
+    text-align: center;
+    padding: 8px;
+}
+
+th{
+  background-color: #d48e87;
+  text-transform: uppercase;
+  font-size: 1.2em;
+}
+
+tr:nth-child(even) {
+    background-color: #ecc298;
+}
+tr:nth-child(odd) {
+  background-color: #facda0;
+}
+/*************************************Class elements***************************************/
+/* Split the screen in half */
+.split {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  overflow-x: hidden;
+}
+
+/* Control the left side */
+.left {
+  left: 0;
+  width: 70%;
+  background-image: url("/static/bg4.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.left img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+/* Control the right side */
+.right {
+  width: 30%;
+  right: 0;
+  background-color: #e1c49c ;
+}
+
+.centre{
+  /* padding-left: 1em; */
+  margin-left: 5.5em;
+  text-align: center;
+}
+
+.btn-primary.p-button {
+    margin-left: 0.8em;
+    background-color: #333333;
+    border-color: #333333;
+    color: white;
+    font-family: 'Alegreya Sans', sans-serif;
+    font-size: 18px;
+}
+
+
+.message{
+  text-align: center;
+  font-size: 1.2em;
+  color: red;
+  font-weight: bold;
+}
+
+.fetch-con{
+  position: absolute;
+  top:1;
+  right: 0;
+  left: 0;
+  width: 700px; 
+  height:400px;
+  margin: auto;
+}
+
+h1.title{
+  font-size: 3em;
+  letter-spacing: 0.2em;
+  background:rgba(1,0,0,0.6);
+  color:#FFCFAD;
+  font-family: sans-serif;
+  text-align: center;
+  padding: 5px;
+}

@@ -1,0 +1,22 @@
+{%extends "layout.html"%}
+{%block content%}
+<header><h1 class="title">ATTENDANCE TRACKER</h1></header>
+<div class="fetch-con">
+    <table>
+        <tr>
+            {% for col in column_names %}
+            <th>{{col}}</th>
+            {% endfor %}
+        </tr>
+        {% for row in row_data %}
+            <tr>
+                {% for row_ in row %}
+                    <td>{{row_}}</td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+
+    </table>
+    {% include btn ignore missing %}
+</div>
+{%endblock%}
