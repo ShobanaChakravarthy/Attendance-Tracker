@@ -1,4 +1,4 @@
-from flask import Flask,render_template,request,send_file
+from flask import Flask,render_template,request,send_file,make_response
 import requests
 import json
 import pandas
@@ -51,7 +51,6 @@ def capture():
                     }
                 r = requests.get('https://fsgrspskd7.execute-api.us-west-2.amazonaws.com/PostApiFinal/', json = PARAMS)
                 return render_template("index.html",text=r.text)
-                #return render_template("index.html",text="You are added Successfully")
             else:
                 return render_template("index.html",text="Employee ID doesn't exist")
         except Exception as e:
@@ -59,8 +58,7 @@ def capture():
 
 @app.route('/display',methods=["POST"])
 def display():
-    global filename
-    global filename1
+    global df
     if request.method == "POST":
         try:
             scrumfet__ = request.form["scrumfet"]
@@ -72,8 +70,8 @@ def display():
                 'Z': scrumfet__,
                 'A': "0"        }
             r = requests.get('https://fsgrspskd7.execute-api.us-west-2.amazonaws.com/PostApiFinal/', json = PARAMS)
-            #b=str([{"Id": "679882", "LoginTime": "0900", "LogoutTime": "1800", "Scrum": "scrum1"}, {"Id": "681472", "LoginTime": "0900", "LogoutTime": "1800", "Scrum": "scrum1"}])
             b=r.text
+            #b=str([{"Id": "679882", "LoginTime": "0900", "LogoutTime": "1800", "Scrum": "scrum1"}, {"Id": "681472", "LoginTime": "0900", "LogoutTime": "1800", "Scrum": "scrum1"}])
             b = b.replace("'", '"')
             a = json.loads(b)
             df=pandas.DataFrame()
@@ -115,18 +113,17 @@ def display():
             del df["timei"]
             #re-ordering columns
             df = df[['Employee Id','Employee Name','Login Time','Logout Time','Scrum']]
-            path_to_download_folder = str(os.path.join(Path.home(), "Downloads"))
-            filename=datetime.datetime.now().strftime(path_to_download_folder+"/%Y-%m-%d"+".csv")
-            filename1=datetime.datetime.now().strftime("%Y-%m-%d"+".csv")
-            df.to_csv(filename,index=None)
             return render_template("fetch.html",column_names=df.columns.values, row_data=list(df.values.tolist()), btn='download.html')
         except Exception as e:
             return render_template("index.html", text=str(e))
 
 @app.route("/download-file/")
 def download():
-    return send_file(filename, attachment_filename=filename1, as_attachment=True)
-
+    filename = datetime.datetime.now().strftime("%Y-%m-%d"+".csv")
+    resp = make_response(df.to_csv())
+    resp.headers["Content-Disposition"] = ("attachment; filename=%s" % filename)
+    resp.headers["Content-Type"] = "text/csv"
+    return resp
 
 if __name__=='__main__':    
-    app.run(debug=True)
+    app.run()
