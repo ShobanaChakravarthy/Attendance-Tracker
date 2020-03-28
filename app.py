@@ -73,7 +73,7 @@ def display():
                 'A': "0"        }
             r = requests.get('https://fsgrspskd7.execute-api.us-west-2.amazonaws.com/PostApiFinal/', json = PARAMS)
             #b=str([{"Id": "679882", "LoginTime": "0900", "LogoutTime": "1800", "Scrum": "scrum1"}, {"Id": "681472", "LoginTime": "0900", "LogoutTime": "1800", "Scrum": "scrum1"}])
-            #b=r.text
+            b=r.text
             b = b.replace("'", '"')
             a = json.loads(b)
             df=pandas.DataFrame()
