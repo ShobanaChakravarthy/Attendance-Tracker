@@ -65,7 +65,7 @@ tr:nth-child(odd) {
 /* Control the left side */
 .left {
   left: 0;
-  width: 70%;
+  /* width: 70%; */
   background-image: url("/static/bg4.jpg");
   background-repeat: no-repeat;
   background-size: cover;
@@ -79,7 +79,7 @@ tr:nth-child(odd) {
 
 /* Control the right side */
 .right {
-  width: 30%;
+  /* width: 30%; */
   right: 0;
   background-color: #e1c49c ;
 }
