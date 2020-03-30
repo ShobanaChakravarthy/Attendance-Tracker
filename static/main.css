@@ -1,7 +1,8 @@
 /*************************************html elements***************************************/
 html,body{
   background-image: url("/static/bg4.jpg");
-  background-repeat: repeat-y; 
+  /* background-repeat: repeat-y;  */
+  background-repeat: repeat-y;
   background-size: cover;
 
 }
