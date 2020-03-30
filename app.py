@@ -85,7 +85,10 @@ def display():
             for i in a:
                 Employee_Id[j]=i["Id"]
                 Login_Time[j]=i["LoginTime"]
-                Logout_Time[j]=i["LogoutTime"]
+                if i["LogoutTime"] == "null":
+                    Logout_Time[j]="0000"
+                else:
+                    Logout_Time[j]=i["LogoutTime"]
                 Scrum[j]=i["Scrum"]
                 Employee_Name[j] = data[Employee_Id[j]]
                 j=j+1
