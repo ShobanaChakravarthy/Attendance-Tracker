@@ -115,6 +115,7 @@ def display():
             del df["Logout_Time"]
             del df["timei"]
             #re-ordering columns
+            print(df)
             df = df[['Employee Id','Employee Name','Login Time','Logout Time','Scrum']]
             return render_template("fetch.html",column_names=df.columns.values, row_data=list(df.values.tolist()), btn='download.html')
         except Exception as e:
@@ -122,6 +123,7 @@ def display():
 
 @app.route("/download-file/")
 def download():
+    print(df)
     filename = datetime.datetime.now().strftime("%Y-%m-%d"+".csv")
     resp = make_response(df.to_csv())
     resp.headers["Content-Disposition"] = ("attachment; filename=%s" % filename)
