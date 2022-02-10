@@ -49,7 +49,7 @@ def capture():
                     'Z': 'insert',
                     'A': scrum__
                     }
-                r = requests.get('https://fsgrspskd7.execute-api.us-west-2.amazonaws.com/PostApiFinal/', json = PARAMS)
+                r = requests.get('http call', json = PARAMS)
                 return render_template("index.html",text=r.text)
             else:
                 return render_template("index.html",text="Employee ID doesn't exist")
@@ -69,7 +69,7 @@ def display():
                 'Y': "0",
                 'Z': scrumfet__,
                 'A': "0"        }
-            r = requests.get('https://fsgrspskd7.execute-api.us-west-2.amazonaws.com/PostApiFinal/', json = PARAMS)
+            r = requests.get('http call', json = PARAMS)
             b=r.text
             #b=str([{"Id": "679882", "LoginTime": "0900", "LogoutTime": "1800", "Scrum": "scrum1"}, {"Id": "681472", "LoginTime": "0900", "LogoutTime": "1800", "Scrum": "scrum1"}])
             b = b.replace("'", '"')
